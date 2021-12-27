@@ -6,13 +6,16 @@ Les Personnages
 - La Sorcière: possède une baguette magique
 - Le Guerrier: possède une épée
 - L'Amazone: possède une lance/ un arc
+La classe et la classe objet sont amis
 
 Les Objets 
 - Arme
 - Poison
 - Medicament
 - Bouclier
-- Clé de téléportation
+- Clé de téléportation ?
+le poison et le médicament sont indifferenciables
+Tous les objets ont des niveaux
 
 Les Armes:
 - Lance 
