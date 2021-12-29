@@ -6,6 +6,7 @@ Les Personnages
 - La Sorcière: possède une baguette magique
 - Le Guerrier: possède une épée
 - L'Amazone: possède une lance/ un arc
+
 La classe et la classe objet sont amis
 
 Les Objets 
