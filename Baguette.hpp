@@ -1,8 +1,8 @@
-class Cle:public Arme {
+class Baguette:public Arme {
 private:
   /* data */
 
 public:
-  Cle (arguments);
-  virtual ~Cle ();
+  Baguette (arguments);
+  virtual ~Baguette ();
 };
