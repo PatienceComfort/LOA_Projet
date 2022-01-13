@@ -1,1 +1,5 @@
-#include "Medicament.hpp"
+#include "Medicament.h"
+
+Medicament::Medicament (int recup): Objet(){
+
+}
