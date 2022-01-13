@@ -1,1 +1,3 @@
-#include "Arme.hpp"
+#include "Arme.h"
+
+Arme::Arme(): Objet(){}
