@@ -3,6 +3,7 @@ private:
   /* data */
 
 public:
-  Guerrier(arguments);
+  Guerrier();
+  void coupDepee(Perso adversaire);
   virtual ~Guerrier ();
 };

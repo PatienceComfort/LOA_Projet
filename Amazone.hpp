@@ -4,6 +4,7 @@ private:
   /* data */
 
 public:
- Amazone  (arguments);
+ Amazone();
+ void coupDeLance(Perso adversaire);
   virtual  ~Amazone ();
 };
