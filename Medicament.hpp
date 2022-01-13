@@ -4,7 +4,7 @@
 
 class Medicament: public Objet {
 private:
-
+  int niveau;
 public:
   Medicament (int recup);
   //virtual ~Medicament ();
