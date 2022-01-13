@@ -13,5 +13,5 @@ int Perso::getHab(){
 }
 
 void Perso::recoitAttaque(int perte){
-  this->indSante -= perte;
+  this->sante -= perte;
 }
