@@ -1,8 +1,15 @@
-class Bouclier:public Objet {
-private:
-  /* data */
+#ifndef BOUCLIER
+#define BOUCLIER
+#include "Objet.hpp"
 
+class Bouclier : public Objet{
+private:
+  int niveau;
+  int nbUti;
 public:
-  Bouclier (arguments);
-  virtual ~Bouclier ();
+  Bouclier(int protection);
+  //virtual ~Bouclier();
+  
 };
+
+#endif
