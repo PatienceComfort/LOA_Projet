@@ -1,8 +1,13 @@
+#ifndef MEDIC
+#define MEDIC
+#include "Objet.hpp"
+
 class Medicament: public Objet {
 private:
-  /* data */
 
 public:
-  Medicament (arguments);
-  virtual ~Medicament ();
+  Medicament (int recup);
+  //virtual ~Medicament ();
 };
+
+#endif
