@@ -1,8 +1,14 @@
+#ifndef POISON
+#define POISON
+#include "Objet.h"
+
 class Poison:public Objet {
 private:
-  /* data */
+    int niveau;
 
 public:
-  Poison (arguments);
-  virtual ~Poison ();
+  Poison(int degat);
+  
 };
+
+#endif
