@@ -1,6 +1,6 @@
 class Guerrier: public Perso {
 private:
-  /* data */
+  std::string nomArme;
 
 public:
   Guerrier();
