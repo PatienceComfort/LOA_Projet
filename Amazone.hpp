@@ -1,7 +1,7 @@
 
 class Amazone : public Perso {
 private:
-  /* data */
+  std::string nomArme;
 
 public:
  Amazone();
