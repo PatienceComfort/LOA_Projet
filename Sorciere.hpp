@@ -1,7 +1,7 @@
 
 class Sorciere:public Perso {
 private:
-  /* data */
+  std::string nomArme;
 
 public:
   Sorciere ();
