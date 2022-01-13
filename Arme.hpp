@@ -1,8 +1,15 @@
-class Arme: public Objet {
-private:
-  /* data */
+#ifndef ARME
+#define ARME
+#include "Objet.h"
 
+class Arme : public Objet{
+private:
+  int niveau;
+  int nbUti;
 public:
-  Arme (arguments);
-  virtual ~Arme ();
+  Arme();
+  virtual ~Arme();
+  
 };
+
+#endif
