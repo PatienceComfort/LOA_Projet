@@ -1,6 +1,6 @@
 class Moine:public Perso {
 private:
-  /* data */
+  std::string nomArme;
 
 public:
   Moine ();
