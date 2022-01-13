@@ -1,12 +1,15 @@
+#ifndef OBJET
+#define OBJET
 
 class Objet {
 private:
-  /* data */
   int nbUti;
   int niveau;
 public:
-  Objet (arguments);
-  virtual ~Objet ();
-  void redUti();
-  void getNiveau();
+  Objet();
+  virtual ~Objet();
+  int getUti();
+  int getNiveau();
 };
+
+#endif
