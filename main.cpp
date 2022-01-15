@@ -1,8 +1,8 @@
 #include <iostream>
 #include <random>
 using namespace std;
-#include "Perso.hpp"
-#include "Piece.hpp"
+#include "Perso.h"
+#include "Piece.h"
 
 int main(){
     //Recupérer le nom du personnage
@@ -49,10 +49,17 @@ int main(){
     //Presentation des objets dans la pièce
     const std::vector<string> objets_noms{"Arme", "Bouclier", "Potion", "Potion"};
     cout << "Dans cette pièce, il y a trois objets: "<<endl;
-    cout << "- 1" << objets_noms[object1]<<endl;
-    cout << "- 2" << objets_noms[object2]<<endl;
-    cout << "- 3" << objets_noms[object3]<<endl;
-    cout << "Dans votre sac, vous avez de la place pour"<<nom_perso->getRemainSpace()<<"objets"<< endl;
+    cout << "- 1 " << objets_noms[object1]<<endl;
+    cout << "- 2 " << objets_noms[object2]<<endl;
+    cout << "- 3 " << objets_noms[object3]<<endl;
+    
+    //boucle if pour presentation d'un adversaire
+    if(adv == true){
+        //nombre aléatoire pour déterminer quel type d'adversaire
+        cout << "Oh tiens nous avons un adversaire"<<endl;
+        //l'adversaire se présente et lance le premier coup
+    }
+    cout << "Dans votre sac, vous avez de la place pour "<<nom_perso->getRemainSpace()<<" objets"<< endl;
     cout <<"Quel objet voulez-vous prendre?"<<endl; //il n'aura le droit de prendre qu'un objet par pièce. Meme si son sac est vide au départ
     int choix_objet;
     cin >> choix_objet;
@@ -67,13 +74,6 @@ int main(){
         //faire la fonction addToBag
     }else{
         cout << "Cet objet n'est pas dans cette pièce. Désolé"<<endl;
-    }
-    
-    //boucle if pour presentation d'un adversaire
-    if(adv == true){
-        //nombre aléatoire pour déterminer quel type d'adversaire
-        cout << "Oh tiens nous avons un adversaire"<<endl;
-        //l'adversaire se présente et lance le premier coup
     }
 
   }else if(role=='G'){
