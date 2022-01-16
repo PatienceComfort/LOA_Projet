@@ -79,12 +79,13 @@ int main() {
   cout << "- 1" << objets_noms[object1]<<endl;
   cout << "- 1" << objets_noms[object2]<<endl;
   cout << "- 1" << objets_noms[object3]<<endl;
-  //a ajouter dans le fichier PERSO
-  /*
-  - get remaining size of bag (int)
-  - get weapon type (string)
-  */
-  cout << "Dans votre sac, vous avez de la place pour" << endl;
+
+  cout << "Dans votre sac, vous avez de la place pour"<<nom_personage.getRemainSpace()<<"objets"<< endl;
+  //nom_personage is appaently out of scope. C'est peut-être du au fait que #include ne marche pas.
+//Faudrait tester si l'erreur "‘nom_personage’ was not declared in this scope" apparait chez Shaina.
+  cout <<"Quel(s) objet(s) voulez-vous prendre?"<<endl;
+
+
   //Puis message avec commandes
 
 /*
