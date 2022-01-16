@@ -6,5 +6,5 @@ Amazone::Amazone():Perso(),nomArme("Lance"){
 
 void Amazone::coupDeLance(Perso * adversaire){
   adversaire->recoitAttaque(15);
-  std::cout<<"Un coup de lance bien placé suffit!!"<<std::endl;
+  std::cout<<"Un coup de lance bien placé suffit!!"<<std::endl ;
 }
