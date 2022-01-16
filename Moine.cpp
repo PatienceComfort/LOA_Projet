@@ -8,3 +8,7 @@ void Moine::coupDePoignard(Perso * adversaire){
   adversaire->recoitAttaque(10);
   std::cout << "Et hop! Un vicieux coup de Poignard"<<std::endl;
 }
+
+void Moine::presentation_adv(){
+  std::cout << "Ah ah ne te crois pas en sécurité parce que je suis un Moine !" << std::endl;
+}
