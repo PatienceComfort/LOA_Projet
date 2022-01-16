@@ -5,6 +5,6 @@ private:
 
 public:
  Amazone();
- void coupDeLance(Perso adversaire);
+ void coupDeLance(Perso *adversaire);
   virtual  ~Amazone ();
 };
