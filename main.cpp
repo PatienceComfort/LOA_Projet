@@ -69,22 +69,112 @@ int main(){
             //l'adversaire est un moine
             Moine *advers = new Moine;
             //Le moine dit sa petite phrase de moquerie
-            //advers->presentation_adv();
-            advers->coupDePoignard(nom_perso);
+            advers->presentation_adv();
+
+            //Boucle for (*10) qui verifie le niveau de vie du joueur. On part du principe que chaque combat dure 10 
+            /*
+            - si ce niveau est > 100
+            - demande l'action du joueur 
+            - l'implémente
+            - implémente une attaque de l'adversaire
+            - si le niveau est <=0
+            - On annonce la défaite du joueur
+            - A la fin du combat, on compare la santé du joueur et de l'adversaire et celui qui en a le plus a gagné 
+            - Si le joueur en a plus, il gagne un point d'habilité 
+            */
+            for(int i = 0; i < 10; i++){
+              advers->coupDePoignard(nom_perso);
+              if(nom_perso->getSante()<= 0){
+                cout << "Quelle défaite cuisante!"<<endl;
+                return 0;
+              }else {
+                char action;
+                cin >> action;
+                if (action == 'A'){
+                  //le joueur lance son attaque
+                  nom_perso->attaqueMagique(*advers);
+                }else if (action == 'B'){
+                  //le joueur utilise son bouclier
+                  nom_perso->leverBouclier();//necessite la fonction leverBouclier dans perso
+                }else{
+                  //attaque inconnue
+                  cout << "C'est quoi cette attaque? Elle est nouvelle? En tout cas elle ne fait rien. HAHA!"<<endl;
+                }
+              }
+            }
+            int a = nom_perso->getSante();
+            int b = advers->getSante();
+            if (a > b){
+              nom_perso.hab += 1;
+              cout << "Feliciatations! Votre victoire a été totale! Et vous augmentez en habilité"<<endl;
+            }
+        
             
         }else if (indAdv == 2){
             //l'adversaire est guerrier
             Guerrier *advers = new Guerrier; 
             //le guerrier dit un truc méchant
-            //advers->presentation_adv();
-            advers->coupDepee(nom_perso);
+            advers->presentation_adv();
+              for(int i = 0; i < 10; i++){
+              advers->coupDepee(nom_perso);
+              if(nom_perso->getSante()<= 0){
+                cout << "Quelle défaite cuisante!"<<endl;
+                return 0;
+              }else {
+                char action;
+                cin >> action;
+                if (action == 'A'){
+                  //le joueur lance son attaque
+                  nom_perso->attaqueMagique(*advers);
+                }else if (action == 'B'){
+                  //le joueur utilise son bouclier
+                  nom_perso->leverBouclier();//necessite la fonction leverBouclier dans perso
+                }else{
+                  //attaque inconnue
+                  cout << "C'est quoi cette attaque? Elle est nouvelle? En tout cas elle ne fait rien. HAHA!"<<endl;
+                }
+              }
+            }
+            int a = nom_perso->getSante();
+            int b = advers->getSante();
+            if (a > b){
+              nom_perso.hab += 1;
+              cout << "Feliciatations! Votre victoire a été totale! Et vous augmentez en habilité"<<endl;
+            }
+        
            
         }else{
             //l'adversaire est une amazone
             Amazone *advers = new Amazone;
             //l'amazone dit qu'elle va l'éventrer
-            //advers->presentation_adv();
-            advers->coupDeLance(nom_perso);
+            advers->presentation_adv();
+            
+            for(int i = 0; i < 10; i++){
+              advers->coupDeLance(nom_perso);
+              if(nom_perso->getSante()<= 0){
+                cout << "Quelle défaite cuisante!"<<endl;
+                return 0;
+              }else {
+                char action;
+                cin >> action;
+                if (action == 'A'){
+                  //le joueur lance son attaque
+                  nom_perso->attaqueMagique(*advers);
+                }else if (action == 'B'){
+                  //le joueur utilise son bouclier
+                  nom_perso->leverBouclier();//necessite la fonction leverBouclier dans perso
+                }else{
+                  //attaque inconnue
+                  cout << "C'est quoi cette attaque? Elle est nouvelle? En tout cas elle ne fait rien. HAHA!"<<endl;
+                }
+              }
+            }
+            int a = nom_perso->getSante();
+            int b = advers->getSante();
+            if (a > b){
+              nom_perso.hab += 1;
+              cout << "Feliciatations! Votre victoire a été totale! Et vous augmentez en habilité"<<endl;
+            }
         }
         
     }
