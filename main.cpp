@@ -58,6 +58,29 @@ int main(){
         //nombre aléatoire pour déterminer quel type d'adversaire
         cout << "Oh tiens nous avons un adversaire"<<endl;
         //l'adversaire se présente et lance le premier coup
+        const std::vector<int> option_adv{1, 2, 3};
+        int indAdv = rand() % option_adv.size();
+        //faire ça 5 fois
+        if(indAdv == 1){
+            //l'adversaire est un moine
+            Moine *advers = new Moine;
+            //Le moine dit sa petite phrase de moquerie
+            advers->presentation_adv();
+            advers->coupDePoignard(nom_perso);
+        }else if (indAdv == 2){
+            //l'adversaire est guerrier
+            Guerrier *advers = new Guerrier; 
+            //le guerrier dit un truc méchant
+            advers->presentation_adv();
+            advers->coupDepee(nom_perso);
+        }else{
+            //l'adversaire est une amazone
+            Amazone *advers = new Amazone;
+            //l'amazone dit qu'elle va l'éventrer
+            advers->presentation_adv();
+            advers->coupDeLance(nom_perso);
+        }
+        
     }
     cout << "Dans votre sac, vous avez de la place pour "<<nom_perso->getRemainSpace()<<" objets"<< endl;
     cout <<"Quel objet voulez-vous prendre?"<<endl; //il n'aura le droit de prendre qu'un objet par pièce. Meme si son sac est vide au départ
