@@ -91,6 +91,7 @@ int main(){
                 return 0;
               }else {
                 char action;
+                cout << "Que voulez vous faire : A = Attaque, B = Bouclier"<<endl;
                 cin >> action;
                 if (action == 'A'){
                   //le joueur lance son attaque
@@ -109,6 +110,9 @@ int main(){
             if (a > b){
               nom_perso->augHabilite();
               cout << "Feliciatations! Votre victoire a été totale! Et vous augmentez en habilité"<<endl;
+            }
+            else{
+              cout << "Mince vous avez perdu ce combat ! "<<endl;
             }
         
             
@@ -144,6 +148,9 @@ int main(){
             if (a > b){
               nom_perso->augHabilite();
               cout << "Feliciatations! Votre victoire a été totale! Et vous augmentez en habilité"<<endl;
+            }
+            else{
+              cout << "Mince vous avez perdu ce combat ! "<< endl;
             }
         
            
@@ -181,7 +188,12 @@ int main(){
               nom_perso->augHabilite();
               cout << "Feliciatations! Votre victoire a été totale! Et vous augmentez en habilité"<<endl;
             }
+            else{
+              cout << "Mince vous avez perdu ce combat ! "<< endl;
+            }
         }
+        // rappel de la santé du joueur
+        cout << "Quelle rude combat ! Faites attention à votre santé, elle est de : "<< nom_perso->getSante()<<endl;
         
     }
     cout << "Dans votre sac, vous avez de la place pour "<<nom_perso->getRemainSpace()<<" objets"<< endl;
@@ -223,6 +235,6 @@ int main(){
 
     //Création du personnage approprié
     /*Mon problème vient de la construction d'une personnage. Donc je vais repartir là dessus dès que je rentre*/
-
+  
     return 0;
 }
