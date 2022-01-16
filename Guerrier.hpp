@@ -4,6 +4,6 @@ private:
 
 public:
   Guerrier();
-  void coupDepee(Perso adversaire);
+  void coupDepee(Perso * adversaire);
   virtual ~Guerrier ();
 };
