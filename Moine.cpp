@@ -4,7 +4,7 @@ Moine::Moine():Perso(), nomArme("Poignard"){
   std::cout <<"Un moine! Dans ce chateau!? Eh ben je souhaite bon courage à vos adversaires"<<std::endl;
 }
 
-void Moine::coupDePoignard(Perso adversaire){
-  adversaire.recoitAttaque(10);
+void Moine::coupDePoignard(Perso * adversaire){
+  adversaire->recoitAttaque(10);
   std::cout << "Et hop! Un vicieux coup de Poignard"<<std::endl;
 }
