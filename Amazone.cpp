@@ -8,3 +8,6 @@ void Amazone::coupDeLance(Perso * adversaire){
   adversaire->recoitAttaque(15);
   std::cout<<"Un coup de lance bien placé suffit!!"<<std::endl ;
 }
+void Amazone::presentation_adv(){
+  std::cout << "Ah ah meme si je te tue on me le pardonnera ! Pourquoi ? Car je suis belle !" << std::endl;
+}
