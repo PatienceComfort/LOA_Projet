@@ -19,6 +19,7 @@ public:
   void recoitAttaque(int perte);
   void leverBouclier(int protection);
   void augHabilite();
+  void augSante();
   int getBagCapacity();
   int getRemainSpace();
   void addToBag(Objet obj);
