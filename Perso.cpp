@@ -17,6 +17,21 @@ void Perso::recoitAttaque(int perte){
   this->indSante -= perte;
 }
 
+void Perso::leverBouclier(int protection){
+  this->sante += protection; // bouclier stop une attaque completement ??
+}
+
+void Perso::augHabilite(){
+  this->hab +=1;
+}
+
+void Perso::augSante(){
+  if (sante<100){
+    this->sante +=50;
+  }
+}
+
+
 int Perso::getBagCapacity(){
   return this->sac.size();
 }
