@@ -1,13 +1,14 @@
-#include "Amazone.hpp"
+#include "Amazone.h"
 
-Amazone::Amazone():Perso(),nomArme("Lance"){
+Amazone::Amazone():Perso(), nomArme("Lance"){
   std::cout << "Une amazone! Et moi qui comptais faire une banquet après. Je n'auarais plus d'invités!!"<<std::endl;
 }
 
-void Amazone::coupDeLance(Perso * adversaire){
+void Amazone::coupDeLance(Perso *adversaire){
   adversaire->recoitAttaque(15);
-  std::cout<<"Un coup de lance bien placé suffit!!"<<std::endl ;
+  std::cout<<"Un coup de lance bien placé suffit!!"<<std::endl;
 }
+
 void Amazone::presentation_adv(){
-  std::cout << "Ah ah meme si je te tue on me le pardonnera ! Pourquoi ? Car je suis belle !" << std::endl;
+  std::cout << "Ah ah quoi que je fasse on me le pardonnera ! Pourquoi ? Car je suis belle !" << std::endl;
 }
