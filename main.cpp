@@ -62,8 +62,8 @@ int main(){
         //nombre aléatoire pour déterminer quel type d'adversaire
         cout << "Oh tiens nous avons un adversaire"<<endl;
         //l'adversaire se présente et lance le premier coup
-        const std::vector<int> option_adv{1, 2, 3};
-        int indAdv = rand() % option_adv.size();
+        //const std::vector<int> option_adv{1, 2, 3};
+        int indAdv = 1+(int)((float)rand()/32767*3);
         //faire ça 5 fois
         if(indAdv == 1){
             //l'adversaire est un moine
@@ -107,8 +107,9 @@ int main(){
             }
             int a = nom_perso->getSante();
             int b = advers->getSante();
-            if (a > b){
+            if (a >= b){
               nom_perso->augHabilite();
+              nom_perso->augSante();
               cout << "Feliciatations! Votre victoire a été totale! Et vous augmentez en habilité"<<endl;
             }
             else{
@@ -145,8 +146,9 @@ int main(){
             }
             int a = nom_perso->getSante();
             int b = advers->getSante();
-            if (a > b){
+            if (a >= b){
               nom_perso->augHabilite();
+              nom_perso->augSante();
               cout << "Feliciatations! Votre victoire a été totale! Et vous augmentez en habilité"<<endl;
             }
             else{
@@ -184,8 +186,9 @@ int main(){
             }
             int a = nom_perso->getSante();
             int b = advers->getSante();
-            if (a > b){
+            if (a >= b){
               nom_perso->augHabilite();
+              nom_perso->augSante();
               cout << "Feliciatations! Votre victoire a été totale! Et vous augmentez en habilité"<<endl;
             }
             else{
