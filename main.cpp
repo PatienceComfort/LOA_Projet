@@ -7,6 +7,8 @@ using namespace std;
 #include "Moine.h"
 #include "Guerrier.h"
 #include "Amazone.h"
+#include "Arme.h"
+#include "Bouclier.h"
 
 int main(){
     //Recupérer le nom du personnage
@@ -33,7 +35,7 @@ int main(){
     cout << "Entrez donc dans le chateau et essayez de sortir de l'autre coté si vous pouvez"<<endl;
     cout << "A l'intérieur vous attends un labyrinth interminable, des pièges et des adversaires"<<endl;
     cout << "Le chateau n'est pas méchant et vous offrira de quoi reussir votre quete. Mais à vous d'en faire bon usage"<<endl;
-    cout << "Combattez vos adversaires, et utilisez vos potion. Mais surtout, choissisez la bonne porte"<<endl;
+    cout << "Combattez vos adversaires, et utilisez vos potion. Mais surtout, choissisez la bonne porte."<<endl;
     //Creation de la première pièce
         //nb de portes
     const std::vector<int> option_portes{1, 2, 3};
@@ -43,19 +45,17 @@ int main(){
     bool adv = rand()%2;
     Piece *piece_active = new Piece(num_portes, adv);
       //Choix des objets à mettre dans la pièce
-    const std::vector<int> option_objets{1, 2, 3, 4};
+    const std::vector<int> option_objets{1, 2};
     //objet1
-    int object1 = rand() % option_objets.size();
+    int object1 = rand() % option_objets.size(); //(int)((float)rand()/32767*2);
     //objet2
-    int object2 = rand() % option_objets.size();
-    //objet3
-    int object3 = rand() % option_objets.size();
+    int object2 = rand() % option_objets.size(); //(int)((float)rand()/32767*2);
     //Presentation des objets dans la pièce
-    const std::vector<string> objets_noms{"Arme", "Bouclier", "Potion", "Potion"};
-    cout << "Dans cette pièce, il y a trois objets: "<<endl;
+    const std::vector<string> objets_noms{"Cle", "Potion"};
+    cout << "Dans cette pièce, il y a deux objets: "<<endl;
     cout << "- 1 " << objets_noms[object1]<<endl;
     cout << "- 2 " << objets_noms[object2]<<endl;
-    cout << "- 3 " << objets_noms[object3]<<endl;
+
     
     //boucle if pour presentation d'un adversaire
     if(adv == true){
@@ -110,7 +110,9 @@ int main(){
             if (a >= b){
               nom_perso->augHabilite();
               nom_perso->augSante();
-              cout << "Feliciatations! Votre victoire a été totale! Et vous augmentez en habilité"<<endl;
+              nom_perso->getArme()->augNiveau();
+              nom_perso->getBouclier()->augNiveau();
+              cout << "Feliciatations! Votre victoire a été totale! Et vous augmentez en habilité ainsi qu'en niveau d'arme et de bouclier"<<endl;
             }
             else{
               cout << "Mince vous avez perdu ce combat ! "<<endl;
@@ -131,6 +133,7 @@ int main(){
                 return 0;
               }else {
                 char action;
+                cout << "Que voulez vous faire : A = Attaque, B = Bouclier"<<endl;
                 cin >> action;
                 if (action == 'A'){
                   //le joueur lance son attaque
@@ -149,7 +152,9 @@ int main(){
             if (a >= b){
               nom_perso->augHabilite();
               nom_perso->augSante();
-              cout << "Feliciatations! Votre victoire a été totale! Et vous augmentez en habilité"<<endl;
+              nom_perso->getArme()->augNiveau();
+              nom_perso->getBouclier()->augNiveau();
+              cout << "Feliciatations! Votre victoire a été totale! Et vous augmentez en habilité  ainsi qu'en niveau d'arme et de bouclier"<<endl;
             }
             else{
               cout << "Mince vous avez perdu ce combat ! "<< endl;
@@ -171,6 +176,7 @@ int main(){
                 return 0;
               }else {
                 char action;
+                cout << "Que voulez vous faire : A = Attaque, B = Bouclier"<<endl;
                 cin >> action;
                 if (action == 'A'){
                   //le joueur lance son attaque
@@ -189,6 +195,8 @@ int main(){
             if (a >= b){
               nom_perso->augHabilite();
               nom_perso->augSante();
+              nom_perso->getArme()->augNiveau();
+              nom_perso->getBouclier()->augNiveau();
               cout << "Feliciatations! Votre victoire a été totale! Et vous augmentez en habilité"<<endl;
             }
             else{
@@ -197,6 +205,9 @@ int main(){
         }
         // rappel de la santé du joueur
         cout << "Quelle rude combat ! Faites attention à votre santé, elle est de : "<< nom_perso->getSante()<<endl;
+        cout << "Habilité = "<< nom_perso->getHab() <<
+         ", niveau Arme = "<< nom_perso->getArme()->getNiveau() <<
+         ", niveau Bouclier = " << nom_perso->getBouclier()->getNiveau()<<endl;
         
     }
     cout << "Dans votre sac, vous avez de la place pour "<<nom_perso->getRemainSpace()<<" objets"<< endl;

@@ -1,8 +1,10 @@
 #ifndef PERSO_H
 #define PERSO_H
-
+#include <iostream>
 #include <vector>
-#include "Objet.hpp"
+#include "Arme.h"
+#include "Bouclier.h"
+
 class Perso{
 protected:
   std::string nom;
@@ -10,7 +12,10 @@ protected:
   int hab;
   std::string nomArme;
   //ajouter le sac
-  std::vector <Objet> sac;
+  std::vector <Objet*> sac;
+  Arme * arme;
+  Bouclier * bouclier;
+  int chance;
 
 public:
   Perso();
@@ -20,12 +25,14 @@ public:
   void leverBouclier(int protection);
   void augHabilite();
   void augSante();
+  Arme * getArme();
+  Bouclier * getBouclier();
+  void useKey();//chance +1
   int getBagCapacity();
   int getRemainSpace();
-  void addToBag(Objet obj);
+  //void addToBag(Objet obj);
   //void removeFromBag(Objet obj);
 
 };
 
-//notons que l'augmentation de l'indice d'habilité vient avec une augmentation de la capacité du sac
 #endif
