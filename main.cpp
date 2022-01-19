@@ -1,16 +1,20 @@
 #include <iostream>
+#include <random>
+#include <time.h>
 using namespace std;
 #include "Perso.h"
-#include "Sorciere.hpp"
-#include "Moine.hpp"
-#include "Guerrier.hpp"
-#include "Amazone.hpp"
-#include "Piece.hpp"
+#include "Piece.h"
+#include "Sorciere.h"
+#include "Moine.h"
+#include "Guerrier.h"
+#include "Amazone.h"
+#include "Arme.h"
+#include "Bouclier.h"
+#include "Potion.h"
+#include "Cle.h"
 
-
-
-int main() {
-  //Recupérer le nom du personnage
+int main(){
+    //Recupérer le nom du personnage
   string name;
   cout << "Votre nom? " << name << endl;
   cin >> name;
@@ -22,78 +26,308 @@ int main() {
   cout << "Des M pour Moines:"<<endl;
   cout << "Des A pour Amazones:"<<endl;
 
-  //Recupérer le rôle du personnage
-  //Au lieu d'un switch, je vais utiliser if else parce que le switch pose problème avec la construction de personnage
-  //Quoique, c'est peut-être juste mon souci de compilateur
+    //Récupérer le role du personnage 
   char role;
   cin >> role;
-
-  if (role == 'S'){
+    if (role == 'S'){
     cout<<"Ah! une nouvelle sorcière"<<endl;
     cout<<"Eh bien entrez donc."<<endl;
     //Faire constructeur Sorcière
-    Sorciere nom_personage;
+    Sorciere *nom_perso = new Sorciere;
+    Arme * arme = new Arme;
+    Bouclier * bouclier = new Bouclier;
+    nom_perso->addToBag(arme);
+    nom_perso->addToBag(bouclier);
+    //Message de bienvenue
+    cout << "Entrez donc dans le chateau et essayez de sortir de l'autre coté si vous pouvez"<<endl;
+    cout << "A l'intérieur vous attends un labyrinth interminable, des pièges et des adversaires"<<endl;
+    cout << "Le chateau n'est pas méchant et vous offrira de quoi reussir votre quete. Mais à vous d'en faire bon usage"<<endl;
+    cout << "Combattez vos adversaires, et utilisez vos potion. Mais surtout, choissisez la bonne porte."<<endl;
+    //Creation de la première pièce
+        //nb de portes
+    const std::vector<int> option_portes{1, 2, 3};
+    srand(time (NULL));
+    int door = rand() % option_portes.size();
+    int num_portes = option_portes[door];
+        //presence adversaire
+
+    bool adv = rand()%2;
+    Piece *piece_active = new Piece(num_portes, adv);
+      //Choix des objets à mettre dans la pièce
+    const std::vector<int> option_objets{1, 2};
+    //objet1
+    int object1 = rand() % option_objets.size();
+    //objet2
+    int object2 = rand() % option_objets.size();
+    const std::vector<string> objets_noms{"Cle", "Potion"};
+    cout << "Dans cette pièce, il y a deux objets: "<<endl;
+    cout << "- 1 " << objets_noms[object1]<<endl;
+    cout << "- 2 " << objets_noms[object2]<<endl;
+  
+
+    
+    //boucle if pour presentation d'un adversaire
+    if(adv == true){
+        //nombre aléatoire pour déterminer quel type d'adversaire
+        cout << "Oh tiens nous avons un adversaire"<<endl;
+        //l'adversaire se présente et lance le premier coup
+        //const std::vector<int> option_adv{1, 2, 3};
+        int indAdv = rand()%3+1;
+        //faire ça 5 fois
+        if(indAdv == 1){
+            //l'adversaire est un moine
+            Moine *advers = new Moine;
+            //Le moine dit sa petite phrase de moquerie
+            advers->presentation_adv();
+
+            //Boucle for (*10) qui verifie le niveau de vie du joueur. On part du principe que chaque combat dure 10 
+            /*
+            - si ce niveau est > 100
+            - demande l'action du joueur 
+            - l'implémente
+            - implémente une attaque de l'adversaire
+            - si le niveau est <=0
+            - On annonce la défaite du joueur
+            - A la fin du combat, on compare la santé du joueur et de l'adversaire et celui qui en a le plus a gagné 
+            - Si le joueur en a plus, il gagne un point d'habilité 
+            */
+            for(int i = 0; i < 10; i++){
+              int s1= nom_perso->getSante();
+              advers->coupDePoignard(nom_perso);
+              int s2= nom_perso->getSante();
+              if(nom_perso->getSante()<= 0){
+                cout << "Quelle défaite cuisante!"<<endl;
+                return 0;
+              }else {
+                char action;
+                cout << "Que voulez vous faire : A = Attaque, B = Bouclier"<<endl;
+                cin >> action;
+                if (action == 'A'){
+                  //le joueur lance son attaque
+                  nom_perso->attaqueMagique(advers);
+                }else if (action == 'B'){
+                  //le joueur utilise son bouclier
+                  nom_perso->leverBouclier(s1-s2);//necessite la fonction leverBouclier dans perso
+                }else{
+                  //attaque inconnue
+                  cout << "C'est quoi cette attaque? Elle est nouvelle? En tout cas elle ne fait rien. HAHA!"<<endl;
+                }
+              }
+            }
+            int a = nom_perso->getSante();
+            int b = advers->getSante();
+            if (a >= b){
+              nom_perso->augHabilite();
+              nom_perso->augSante();
+              arme->augNiveau();
+              bouclier->augNiveau();
+              cout << "Feliciatations! Votre victoire a été totale! Et vous augmentez en habilité ainsi qu'en niveau d'arme et de bouclier"<<endl;
+            }
+            else{
+              cout << "Mince vous avez perdu ce combat ! "<<endl;
+            }
+        
+            
+        }else if (indAdv == 2){
+            //l'adversaire est guerrier
+            Guerrier *advers = new Guerrier; 
+            //le guerrier dit un truc méchant
+            advers->presentation_adv();
+              for(int i = 0; i < 10; i++){
+              int s1= nom_perso->getSante();
+              advers->coupDepee(nom_perso);
+              int s2= nom_perso->getSante();
+              if(nom_perso->getSante()<= 0){
+                cout << "Quelle défaite cuisante!"<<endl;
+                return 0;
+              }else {
+                char action;
+                cout << "Que voulez vous faire : A = Attaque, B = Bouclier"<<endl;
+                cin >> action;
+                if (action == 'A'){
+                  //le joueur lance son attaque
+                  nom_perso->attaqueMagique(advers);
+                }else if (action == 'B'){
+                  //le joueur utilise son bouclier
+                  nom_perso->leverBouclier(s1-s2);//necessite la fonction leverBouclier dans perso
+                }else{
+                  //attaque inconnue
+                  cout << "C'est quoi cette attaque? Elle est nouvelle? En tout cas elle ne fait rien. HAHA!"<<endl;
+                }
+              }
+            }
+            int a = nom_perso->getSante();
+            int b = advers->getSante();
+            if (a >= b){
+              nom_perso->augHabilite();
+              nom_perso->augSante();
+              arme->augNiveau();
+              bouclier->augNiveau();
+              cout << "Feliciatations! Votre victoire a été totale! Et vous augmentez en habilité  ainsi qu'en niveau d'arme et de bouclier"<<endl;
+            }
+            else{
+              cout << "Mince vous avez perdu ce combat ! "<< endl;
+            }
+        
+           
+        }else{
+            //l'adversaire est une amazone
+            Amazone *advers = new Amazone;
+            //l'amazone dit qu'elle va l'éventrer
+            advers->presentation_adv();
+            
+            
+            for(int i = 0; i < 10; i++){
+              int s1= nom_perso->getSante();
+              advers->coupDeLance(nom_perso);
+              int s2= nom_perso->getSante();
+              if(nom_perso->getSante()<= 0){
+                cout << "Quelle défaite cuisante!"<<endl;
+                return 0;
+              }else {
+                char action;
+                cout << "Que voulez vous faire : A = Attaque, B = Bouclier"<<endl;
+                cin >> action;
+                if (action == 'A'){
+                  //le joueur lance son attaque
+                  nom_perso->attaqueMagique(advers);
+                }else if (action == 'B'){
+                  //le joueur utilise son bouclier
+                  nom_perso->leverBouclier(s1-s2);//necessite la fonction leverBouclier dans perso
+                }else{
+                  //attaque inconnue
+                  cout << "C'est quoi cette attaque? Elle est nouvelle? En tout cas elle ne fait rien. HAHA!"<<endl;
+                }
+              }
+            }
+          
+            int a = nom_perso->getSante();
+            int b = advers->getSante();
+            if (a >= b){
+              nom_perso->augHabilite();
+              nom_perso->augSante();
+              arme->augNiveau();
+              bouclier->augNiveau();
+              cout << "Feliciatations! Votre victoire a été totale! Et vous augmentez en habilité"<<endl;
+            }
+            else{
+              cout << "Mince vous avez perdu ce combat ! "<< endl;
+            }
+        }
+        // rappel de la santé du joueur
+        cout << "Quelle rude combat ! Faites attention à votre santé, elle est de : "<< nom_perso->getSante()<<endl;
+        cout << "Habilité = "<< nom_perso->getHab() <<
+         ", niveau Arme = "<< arme->getNiveau() <<
+         ", niveau Bouclier = " << bouclier->getNiveau()<<endl;
+        
+    }
+    cout << "Voici les objets de votre sac (sans compter votre arme et votre bouclier)" << endl;
+  
+    if(nom_perso->getBagCapacity()<3){
+      cout << "Vous n'avez rien dans votre sac sauf votre arme et votre bouclier"<<endl;
+    }else{
+      //nom_perso->getBagObj();
+      cout<<"1: "<< nom_perso->getBag()[3]->getName()<<", 2: "<< nom_perso->getBag()[4]->getName()<<endl;
+      cout << "Quel objet voulez-vous utilisé ?"<< endl;
+      int useObj;
+      cin >> useObj;
+      if(useObj==1){
+        if(nom_perso->getBag()[3]->getName()=="Cle"){
+          nom_perso->useKey();
+        }
+        else{
+          nom_perso->usePotion();
+        }
+        nom_perso->removeFromBag(nom_perso->getBag()[3],1);
+      }
+      else{
+        if(nom_perso->getBag()[4]->getName()=="Cle"){
+          nom_perso->useKey();
+        }
+        else{
+          nom_perso->usePotion();
+        }
+        nom_perso->removeFromBag(nom_perso->getBag()[4],2);
+      }
+      
+    }
+
+    cout << "Dans votre sac, vous avez de la place pour "<<nom_perso->getRemainSpace()<<" objets"<< endl;
+    cout <<"Quel objet voulez-vous prendre?"<<endl; //il n'aura le droit de prendre qu'un objet par pièce. Meme si son sac est vide au départ
+    int choix_objet;
+    cin >> choix_objet;
+    if(choix_objet == 1){
+      if (object1 == 0){
+      Cle *obj1 = new Cle();
+      nom_perso->addToBag(obj1);
+    }else if (object1 == 1){
+      Potion *obj1 = new Potion;
+      nom_perso->addToBag(obj1);
+    }
+
+    }else if(choix_objet == 2){
+        if (object2 == 0){
+      Cle *obj2 = new Cle();
+      nom_perso->addToBag(obj2);
+    }else if (object2 == 1){
+      Potion *obj2 = new Potion;
+      nom_perso->addToBag(obj2);
+    }
+    }else{
+        cout << "Cet objet n'est pas dans cette pièce. Désolé"<<endl;
+    }
+    cout<< "Il vous reste "<<nom_perso->getRemainSpace()<<" places"<<endl;
+//
+    if(nom_perso->getBagCapacity()<3){
+      cout << "Vous n'avez rien dans votre sac sauf votre arme et votre bouclier"<<endl;
+    }else{
+      //nom_perso->getBagObj();
+      Objet * ObjSac1= nom_perso->getBag()[0];
+      cout<<"1: "<< ObjSac1->getName()<<", 2: "<<endl;
+      cout << "Voulez-vous déposer un objet dans la pièce ? (1: Oui, 0: Non)"<< endl;
+      int depot;
+      cin >> depot;
+      if(depot==1){
+        cout << "Quel objet voulez-vous déposer?"<< endl; 
+        int aRetirer;
+        cin >> aRetirer;
+        //Objet * ObjSac1= nom_perso->getBag()[2];
+        cout << "getbag"<< endl;
+
+        if(aRetirer==1){
+          
+          nom_perso->removeFromBag(ObjSac1,0);
+      }
+        else{
+          nom_perso->removeFromBag(nom_perso->getBag()[3],1);
+        }
+      }
+    }
+
+    cout<< "Il vous reste "<<nom_perso->getRemainSpace()<<" places XXXX"<<endl;
+
   }else if(role=='G'){
     cout<<"Ah! un nouveau guerrier"<<endl;
     cout<<"Eh bien entrez donc."<<endl;
     //Faire constructeur Guerrier
-    Guerrier nom_personage;
+    
   }else if(role == 'M'){
     cout<<"Ah! un nouveau Moine"<<endl;
     cout<<"Eh bien entrez donc."<<endl;
     //Faire constructeur Moine
-    Moine nom_personage;
+    
   }else if(role == 'A'){
     cout<<"Ah! une nouvelle Amazone"<<endl;
     cout<<"Eh bien entrez donc."<<endl;
     //Faire constructeur Amazone
-    Amazone nom_personage;
+    
   }else{
     cout <<"Nous ne connaissons pas ce rôle. Pas dans ce chateau. Allez vous en et revenez quand vous savez ce que vous voulez"<<endl;
     return 0;
   }
 
-  //Message de bienvenue
- cout << "Entrez donc dans le chateau et essayez de sortir de l'autre coté si vous pouvez"<<endl;
- cout << "A l'intérieur vous attends un labyrinth interminable, des pièges et des adversaires"<<endl;
- cout << "Le chateau n'est pas méchant et vous offrira de quoi reussir votre quete. Mais à vous d'en faire bon usage"<<endl;
- cout << "Combattez vos adversaires, et utilisez vos potion. Mais surtout, choissisez la bonne porte"<<endl;
-
- //Creation de la pièce
- //probleme potentiel: out of scope du vecteur
-  const std::vector<int> option_portes{1, 2, 3};
-  int door = rand() % option_portes.size();
-  int num_portes = option_portes[door];
-  Piece piece_active(num_portes); //donc on crée une pièce avec 1, 2 ou trois portes.
-
-  //Choix des objets à mettre dans la pièce
-  const std::vector<int> option_objets{1, 2, 3, 4};
-  //objet1
-  int object1 = rand() % option_objets.size();
-  //objet2
-  int object2 = rand() % option_objets.size();
-  //objet3
-  int object3 = rand() % option_objets.size();
-  const std::vector<string> objets_noms{"Arme", "Bouclier", "Potion", "Potion"};
-  cout << "Dans cette pièce, il y a trois objets: "<<endl;
-  cout << "- 1" << objets_noms[object1]<<endl;
-  cout << "- 1" << objets_noms[object2]<<endl;
-  cout << "- 1" << objets_noms[object3]<<endl;
-  //a ajouter dans le fichier PERSO
-  /*
-  - get remaining size of bag (int)
-  - get weapon type (string)
-  */
-  cout << "Dans votre sac, vous avez de la place pour" << endl;
-  //Puis message avec commandes
-
-/*
-
-   3 objets aléatoires sont crées
-
-   Le nom de ces objets sont ajoutés dans le vecteur d'objets de la Piece
-   un nombre aléatoire est choisit, si personnage créé on change le bool de presence_adversaire à construire
-   */
-
-  return 0;
+    //Création du personnage approprié
+    /*Mon problème vient de la construction d'une personnage. Donc je vais repartir là dessus dès que je rentre*/
+  
+    return 0;
 }
