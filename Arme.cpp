@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Arme.h"
 
 Arme::Arme(): Objet(){}

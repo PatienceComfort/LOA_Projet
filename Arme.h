@@ -10,7 +10,7 @@ public:
   Arme();
   //void augNiveau();
   //virtual ~Arme();
-  
+
 };
 
 #endif

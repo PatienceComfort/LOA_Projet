@@ -15,5 +15,5 @@ int Sac::getBagCapacity(){
     return this->contenu.size();
 }
 int Sac::getRemainSpace(){
-    return 2-this->getBagCapacity();
+    return 4-this->getBagCapacity();
 }

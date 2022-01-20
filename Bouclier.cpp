@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Bouclier.h"
 
 Bouclier::Bouclier(): Objet(){
