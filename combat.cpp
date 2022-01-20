@@ -55,28 +55,28 @@ void resultatDuel(Perso * nom_perso, Perso * advers, Arme * arme, Bouclier * bou
 
 void Sequence_combat(Perso * joueur, int alea_adv, Arme * arme, Bouclier * bouclier, int i){
   cout<<"Preparez vous a combattre !"<<endl; 
-  if(alea_adv = 1){
+  if(alea_adv == 1){
     Moine *adversaire = new Moine;
     adversaire->presentation_adv();
     duel(joueur, adversaire, alea_adv, i);
     resultatDuel(joueur,adversaire , arme, bouclier);
     delete adversaire;
   }
-  else if(alea_adv = 2){
+  else if(alea_adv == 2){
     Sorciere *adversaire = new Sorciere;
     adversaire->presentation_adv();
     duel(joueur, adversaire, alea_adv, i);
     resultatDuel(joueur,adversaire , arme, bouclier);
     delete adversaire;
   }
-  else if(alea_adv = 3){
+  else if(alea_adv == 3){
     Guerrier *adversaire = new Guerrier;
     adversaire->presentation_adv();
     duel(joueur, adversaire,alea_adv, i);
     resultatDuel(joueur,adversaire , arme, bouclier);
     delete adversaire;
   }
-  else if(alea_adv = 4){
+  else if(alea_adv == 4){
     Amazone *adversaire = new Amazone;
     adversaire->presentation_adv();
     duel(joueur, adversaire,alea_adv, i);
