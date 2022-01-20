@@ -124,7 +124,7 @@ if(role == 'S'){
   sacJoueur->addToBag(bouclier);
   for (int k = 0; k<10;k++){
       if(nom_perso->getSante()<= 0){
-          cout << "Requiem" <<endl;
+          cout << "Requiem. Vous êtes mort." <<endl;
           return 0;
       }
     cout << "Vous entrez dans une nouvelle pièce. Attention un adversaire se cache dans les ténèbres"<<endl;
@@ -153,7 +153,7 @@ if(role == 'S'){
   sacJoueur->addToBag(bouclier);
   for (int k = 0; k<10;k++){
       if(nom_perso->getSante()<= 0){
-          cout << "Requiem" <<endl;
+          cout << "Requiem. Vous êtes mort." <<endl;
           return 0;
       }
     cout << "Vous entrez dans une nouvelle pièce. Attention un adversaire se cache dans les ténèbres"<<endl;

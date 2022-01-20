@@ -37,7 +37,7 @@ int duel(Perso * joueur, Perso * adversaire, int alea_adv, int j){
   }
 }
 
-void resultatDuel(Perso * nom_perso, Perso * advers, Arme * arme, Bouclier * bouclier){
+int resultatDuel(Perso * nom_perso, Perso * advers, Arme * arme, Bouclier * bouclier){
   int a = nom_perso->getSante();
   int b = advers->getSante();
   if (a >= b){
@@ -48,6 +48,10 @@ void resultatDuel(Perso * nom_perso, Perso * advers, Arme * arme, Bouclier * bou
     cout << "Feliciatations! Votre victoire a été totale! Et vous augmentez en habilité ainsi qu'en niveau d'arme et de bouclier"<<endl;
   }else{
     cout << "Mince vous avez perdu ce combat ! "<<endl;
+  }
+  if(nom_perso->getSante()<=0){
+    cout<<"Vous êtes mort au combat.";
+    return 0;
   }
   nom_perso->afficherStats();
 }
