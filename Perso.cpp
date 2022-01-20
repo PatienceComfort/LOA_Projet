@@ -3,7 +3,7 @@
 
 
 
-Perso::Perso():nom(" "), sante(100), hab(1), chance(0), sac{}{
+Perso::Perso():nom(" "), sante(100), hab(1), chance(0){
   std::cout << "un personnage a été crée!"<<std::endl;
 }
 
@@ -23,6 +23,22 @@ void Perso::leverBouclier(int protection){
   this->sante += protection;
 }
 
+
+void Perso::lancerAttaque(Perso * adversaire,int rand){
+  if(rand==1){
+    adversaire->recoitAttaque(10);
+  }
+  else if(rand==2){
+    adversaire->recoitAttaque(5);
+  }
+  else if(rand==3){
+  adversaire->recoitAttaque(5);
+  }
+  else if(rand==4){
+    adversaire->recoitAttaque(15);
+  }
+}
+
 void Perso::augHabilite(){
   this->hab +=1;
 }
@@ -32,40 +48,6 @@ void Perso::augSante(){
     this->sante +=50;
   }
 }
-
-int Perso::getBagCapacity(){
-  return this->sac.size();
-}
-
-
-int Perso::getRemainSpace(){
-  int remain = 4 - getBagCapacity();
-  return remain;
-}
-
-
-void Perso::addToBag(Objet * obj){
-  this->sac.push_back(obj);
-}
-/*
-void Perso::getBagObj(){
-  std::vector <Objet *> bag = this->getBag();
-  std::cout<<"1: "<< bag[3]->getName()<<", 2: "<< bag[4]->getName()<<std::endl;
-
-}
-*/
-std::vector<Objet*> Perso::getBag(){
-  std::vector<Objet*> bag;
-  for(int i; i<sac.size()+1; i++){
-    bag.push_back(sac[i]);
-  }
-  return bag;
-}
-
-void Perso::removeFromBag(Objet * obj, int index){
-  this->sac.erase(sac.begin()+index);
-}
-
 void Perso::usePotion(){
   int danger = rand()%2;
   if(danger==0){

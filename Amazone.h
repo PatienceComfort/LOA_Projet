@@ -1,15 +1,16 @@
 #ifndef AMAZONE
 #define AMAZONE
+#include "Perso.h"
 
-#include <iostream>
-#include "Personnage.h"
-
-class Amazone:public Personnage{
+class Amazone : public Perso {
+private:
+  std::string nomArme;
 
 public:
-  Amazone();
-  void lancerAttaque(Personnage * adversaire, int loss);
-  void presentAdv();
+ Amazone();
+ void lancerAttaque(Perso *adversaire);
+ void presentation_adv();
+ //virtual  ~Amazone ();
 };
 
 #endif

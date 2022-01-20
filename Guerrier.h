@@ -1,15 +1,17 @@
 #ifndef GUERRIER
 #define GUERRIER
+#include "Perso.h"
 
-#include <iostream>
-#include "Personnage.h"
-
-class Guerrier:public Personnage{
+class Guerrier: public Perso {
+private:
+  std::string nomArme;
 
 public:
   Guerrier();
-  void lancerAttaque(Personnage * adversaire, int loss);
-  void presentAdv();
+  void lancerAttaque(Perso * adversaire);
+  void presentation_adv();
+
+  //virtual ~Guerrier ();
 };
 
 #endif

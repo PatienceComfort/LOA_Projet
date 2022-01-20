@@ -1,3 +1,5 @@
+#ifndef CLE
+#define CLE
 #include"Objet.h"
 
 class Cle: public Objet {
@@ -5,4 +7,7 @@ class Cle: public Objet {
     std::string name;
     public:
     Cle();
+    std::string getName();
+    
 };
+#endif

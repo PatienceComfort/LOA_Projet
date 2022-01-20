@@ -1,23 +1,22 @@
 #ifndef SAC
 #define SAC
-
+#include"Perso.h"
+#include "Objet.h"
 #include <iostream>
 #include <vector>
-#include"Personnage.h"
-#include "Objet.h"
 
 class Sac{
-    friend class Personnage;
+    friend class Perso;
     friend class Objet;
-    
     protected:
-   std::vector <Objet *> contenu;
+    static std::vector <Objet *> contenu;
     public:
     Sac();
     void addToBag(Objet * objAjoute);
     void removeFromBag(int index);
     int getBagCapacity();
     int getRemainSpace();
+    Objet * getContenu(int index);
 };
 
 #endif

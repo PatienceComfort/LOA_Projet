@@ -1,5 +1,8 @@
 #include "Potion.h"
 
-Potion::Potion():Objet(){
+Potion::Potion():Objet(),name("Potion"){
 
+}
+std::string Potion::getName(){
+  return this->name;
 }

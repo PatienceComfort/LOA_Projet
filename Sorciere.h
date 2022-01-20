@@ -1,15 +1,16 @@
 #ifndef SORCIERE
 #define SORCIERE
+#include "Perso.h"
 
-
-#include <iostream>
-#include "Personnage.h"
-
-class Sorciere:public Personnage{
+class Sorciere:public Perso {
+private:
+  std::string nomArme;
 
 public:
-  Sorciere();
-  void lancerAttaque(Personnage * adversaire, int loss);
-  void presentAdv();
+  Sorciere ();
+  void lancerAttaque(Perso *adversaire);//la soricère lance une attaque magique qui retire 5 points de vie
+  void presentation_adv();//utilise bouclier dans le sac 
+  //virtual ~Sorciere ();
 };
+
 #endif

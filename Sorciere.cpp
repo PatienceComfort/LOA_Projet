@@ -1,16 +1,14 @@
-
-#include <iostream>
-using namespace std;
-#include "Personnage.h"
 #include "Sorciere.h"
 
-Sorciere::Sorciere():Personnage(),nomArme("Baguette magique"){
-
+Sorciere::Sorciere():Perso(), nomArme("Baguette Magique"){
+  std::cout << "Ahhh! Une sorcière!! Redoutable"<<std::endl;
 }
 
-void Sorciere::lancerAttaque(Personnage * adversaire, int loss = 5) {
-  adversaire->recoitAttaque(loss);
+void Sorciere::lancerAttaque(Perso *adversaire){
+  adversaire->recoitAttaque(5);
+  std::cout <<"Attaque magique!"<<std::endl;
 }
-void Sorciere::presentAdv(){
-  cout<<"Mes pouvoirs magiques me permettrons de te vaincre en deux tours"<<endl;
+
+void Sorciere::presentation_adv(){
+  std::cout << "Ah ah tu n'est pas de taille contre ma magie !" << std::endl;
 }

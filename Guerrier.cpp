@@ -1,16 +1,14 @@
-
-#include <iostream>
-using namespace std;
 #include "Guerrier.h"
-#include "Personnage.h"
 
-Guerrier::Guerrier():Personnage(),nomArme("Epée"){
-
+Guerrier::Guerrier():Perso(),nomArme("Epée"){
+  std::cout << "Un véritable guerrier parmi nous? Voilà qui risque d'être sanglant!"<<std::endl;
 }
 
-void Guerrier::lancerAttaque(Personnage * adversaire, int loss = 15) {
-  adversaire->recoitAttaque(loss);
+void Guerrier::lancerAttaque(Perso *adversaire){
+  adversaire->recoitAttaque(5);
+  std::cout <<"Prends ça mécréant!"<<std::endl;
 }
-void Guerrier::presentAdv(){
-  cout<<"Mon épée m'apportera la victoire. En garde!"<<endl;
+
+void Guerrier::presentation_adv(){
+  std::cout << "Ah ah je vais t'écraser !" << std::endl;
 }

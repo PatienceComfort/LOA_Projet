@@ -12,7 +12,7 @@ protected:
   int hab;
   std::string nomArme;
   //ajouter le sac
-  std::vector <Objet*> sac;
+  //std::vector <Objet*> sac;
   int chance;
 
 public:
@@ -21,16 +21,18 @@ public:
   int getHab();
   void recoitAttaque(int perte);
   void leverBouclier(int protection);
+  void reduceSante(int damage);
+  void lancerAttaque(Perso * adversaire,int rand);
   void augHabilite();
   void augSante();
   void useKey();//chance +1
   void usePotion();
-  int getBagCapacity();
-  int getRemainSpace();
-  void addToBag(Objet * obj);
+  //int getBagCapacity();
+  //int getRemainSpace();
+  //void addToBag(Objet * obj);
   //void getBagObj();
-  std::vector <Objet*> getBag();
-  void removeFromBag(Objet * obj, int index);
+  //std::vector <Objet*> getBag();
+  //void removeFromBag(Objet * obj, int index);
 
 
 };

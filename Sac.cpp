@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Sac.h"
 
+std::vector <Objet *>  Sac::contenu= {};
+
 Sac::Sac(){
 
 }
@@ -17,3 +19,7 @@ int Sac::getBagCapacity(){
 int Sac::getRemainSpace(){
     return 4-this->getBagCapacity();
 }
+Objet * Sac::getContenu(int index){
+    return this->contenu[index];
+}
+

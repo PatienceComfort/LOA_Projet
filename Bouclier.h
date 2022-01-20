@@ -10,7 +10,7 @@ public:
   Bouclier();
   //void augNiveau();
   //virtual ~Bouclier();
-
+  
 };
 
 #endif

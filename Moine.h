@@ -1,18 +1,16 @@
 #ifndef MOINE
 #define MOINE
+#include "Perso.h"
 
-#include <iostream>
-#include "Personnage.h"
-
-class Moine:public Personnage{
+class Moine: public Perso {
+private:
+  std::string nomArme;
 
 public:
   Moine();
-  void lancerAttaque(Personnage * adversaire, int loss);
-  void presentAdv();
+  void lancerAttaque(Perso *adversaire);//un coup de Poignard retire 10 points de vie à l'adversaire
+  void presentation_adv();
+  //virtual ~Moine();
 };
-
-
-
 
 #endif
