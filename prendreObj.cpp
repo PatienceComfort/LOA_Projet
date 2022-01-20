@@ -10,7 +10,7 @@ void choixObjet(Sac * sac, int object1, int object2){
     cin >> choix_objet;
     if(choix_objet == 1){
       if (object1 == 0){
-      Cle *obj1 = new Cle();
+      Cle *obj1 = new Cle;
       sac->addToBag(obj1);
     }else if (object1 == 1){
       Potion *obj1 = new Potion;
@@ -19,7 +19,7 @@ void choixObjet(Sac * sac, int object1, int object2){
 
     }else if(choix_objet == 2){
         if (object2 == 0){
-      Cle *obj2 = new Cle();
+      Cle *obj2 = new Cle;
       sac->addToBag(obj2);
     }else if (object2 == 1){
       Potion *obj2 = new Potion;

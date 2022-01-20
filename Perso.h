@@ -19,22 +19,18 @@ public:
   Perso();
   int getSante();
   int getHab();
+  int getChance();
   void recoitAttaque(int perte);
   void leverBouclier(int protection);
   void reduceSante(int damage);
   void lancerAttaque(Perso * adversaire,int rand);
   void augHabilite();
   void augSante();
+  void augChance();
   void useKey();//chance +1
   void usePotion();
-  //int getBagCapacity();
-  //int getRemainSpace();
-  //void addToBag(Objet * obj);
-  //void getBagObj();
-  //std::vector <Objet*> getBag();
-  //void removeFromBag(Objet * obj, int index);
-
-
+  void afficherStats();
+  ~Perso();
 };
 
 #endif

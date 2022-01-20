@@ -5,17 +5,14 @@
 
 class Piece {
 private:
-  /* data */
-  int nb_portes;//une pièce a soit 3 portes, si elle est normale, soit 1 ou 2 si c'est une pièce d'angle
-  int nb_objets; // toujours au nombre de 3
-  std::vector <std::string> objets;
-  bool presence_adversaire;//si oui, on va aussi avoir besoin de construire un adversaire
+  int nb_portes;//une pièce a soit 3 portes, si elle est normale, soit 2 si c'est une pièce d'angle, soit 1 si c'est une piece de transition
 
 public:
   Piece(int nbDePortes);
-  Piece(int nbDePortes, bool combat);
-  Piece(int nbDePortes, bool combat, bool sortie);// sortie(1), combat(0)
-  //virtual ~Piece ();
+  int getNbDoors();
+  //Piece(int nbDePortes, bool sortie);
+  //Piece(int nbDePortes, bool combat, bool sortie);
+  virtual ~Piece ();
 };
 
 #endif

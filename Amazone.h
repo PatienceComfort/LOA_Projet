@@ -8,9 +8,9 @@ private:
 
 public:
  Amazone();
- void lancerAttaque(Perso *adversaire);
+ //void lancerAttaque(Perso *adversaire);
  void presentation_adv();
- //virtual  ~Amazone ();
+ virtual  ~Amazone ();
 };
 
 #endif

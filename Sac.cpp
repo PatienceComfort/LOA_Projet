@@ -20,6 +20,6 @@ int Sac::getRemainSpace(){
     return 4-this->getBagCapacity();
 }
 Objet * Sac::getContenu(int index){
-    return this->contenu[index];
+    return contenu[index];
 }
 

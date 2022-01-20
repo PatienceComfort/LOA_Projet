@@ -8,10 +8,9 @@ private:
 
 public:
   Guerrier();
-  void lancerAttaque(Perso * adversaire);
+  //void lancerAttaque(Perso * adversaire);
   void presentation_adv();
-
-  //virtual ~Guerrier ();
+  virtual ~Guerrier ();
 };
 
 #endif
