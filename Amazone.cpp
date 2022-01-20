@@ -1,15 +1,16 @@
+
+#include <iostream>
+using namespace std;
 #include "Amazone.h"
+#include "Personnage.h"
 
+Amazone::Amazone():Personnage(),nomArme("Lance"){
 
-Amazone::Amazone():Perso(), nomArme("Lance"){
-  std::cout << "Une amazone! Et moi qui comptais faire une banquet après. Je n'auarais plus d'invités!!"<<std::endl;
 }
 
-void Amazone::coupDeLance(Perso *adversaire){
-  adversaire->recoitAttaque(15);
-  std::cout<<"Un coup de lance bien placé suffit!!"<<std::endl;
+void Amazone::lancerAttaque(Personnage * adversaire, int loss = 15) {
+  adversaire->recoitAttaque(loss);
 }
-
-void Amazone::presentation_adv(){
-  std::cout << "Ah ah quoi que je fasse on me le pardonnera ! Pourquoi ? Car je suis belle !" << std::endl;
+void Amazone::presentAdv(){
+  cout<<"N'as tu pas peur, ma lance est reconnue dans toutes les contrées. Je suis imbattable"<<endl;
 }

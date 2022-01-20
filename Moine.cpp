@@ -1,14 +1,16 @@
+
+#include <iostream>
+using namespace std;
+#include "Personnage.h"
 #include "Moine.h"
 
-Moine::Moine():Perso(), nomArme("Poignard"){
-  std::cout <<"Un moine! Dans ce chateau!? Eh ben je souhaite bon courage à vos adversaires"<<std::endl;
+Moine::Moine():Personnage(),nomArme("Poignard"){
+
 }
 
-void Moine::coupDePoignard(Perso *adversaire){
-  adversaire->recoitAttaque(10);
-  std::cout << "Et hop! Un vicieux coup de Poignard"<<std::endl;
+void Moine::lancerAttaque(Personnage * adversaire, int loss = 10) {
+  adversaire->recoitAttaque(loss);
 }
-
-void Moine::presentation_adv(){
-  std::cout << "Ah ah ne te crois pas en sécurité parce que je suis un Moine !" << std::endl;
+void Moine::presentAdv(){
+  cout<<"Je prierais pour ton ame. Mais seulment après t'avoir battu!"<<endl;
 }
