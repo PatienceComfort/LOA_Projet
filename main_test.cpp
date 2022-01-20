@@ -13,7 +13,7 @@ using namespace std;
 #include "combat.cpp"
 #include "utiliserObj.cpp"
 #include "prendreObj.cpp"
-
+#include "deposerObj.cpp"
 
 
 int main() {
@@ -43,6 +43,7 @@ const std::vector<string> objets_noms{"Cle", "Potion"};
 cout << "Dans cette pièce, il y a deux objets: "<<endl;
 cout << "- 1 " << objets_noms[object1]<<endl;
 cout << "- 2 " << objets_noms[object2]<<endl;
+
 if(role == 'S'){
   int i = 2;
   //creer le joueur
@@ -68,6 +69,7 @@ if(role == 'S'){
   choixObjet(sacJoueur, object1, object2);
   //utiliser objet dans son sac
   utilObj(sacJoueur, nom_perso);
+  depotObjet(sacJoueur);
 
 }else if(role == 'G'){
   int i =3;
