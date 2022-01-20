@@ -12,6 +12,7 @@ using namespace std;
 #include "Bouclier.h"
 #include "Potion.h"
 #include "Cle.h"
+#include "Sac.h"
 
 int main(){
     //Recupérer le nom du personnage
@@ -36,8 +37,9 @@ int main(){
     Sorciere *nom_perso = new Sorciere;
     Arme * arme = new Arme;
     Bouclier * bouclier = new Bouclier;
-    nom_perso->addToBag(arme);
-    nom_perso->addToBag(bouclier);
+    Sac * sac = new Sac;
+    sac->addToBag(arme);
+    sac->addToBag(bouclier);
     //Message de bienvenue
     cout << "Entrez donc dans le chateau et essayez de sortir de l'autre coté si vous pouvez"<<endl;
     cout << "A l'intérieur vous attends un labyrinth interminable, des pièges et des adversaires"<<endl;
@@ -221,69 +223,75 @@ int main(){
          ", niveau Bouclier = " << bouclier->getNiveau()<<endl;
         
     }
-    cout << "Voici les objets de votre sac (sans compter votre arme et votre bouclier)" << endl;
   
-    if(nom_perso->getBagCapacity()<3){
+    if(sac->getBagCapacity()<3){
       cout << "Vous n'avez rien dans votre sac sauf votre arme et votre bouclier"<<endl;
-    }else{
-      //nom_perso->getBagObj();
-      cout<<"1: "<< nom_perso->getBag()[3]->getName()<<", 2: "<< nom_perso->getBag()[4]->getName()<<endl;
+    }/*else{
+      cout << "Voici les objets de votre sac : " << sac->getNameObj(2)<<endl;
+      //sac->getContenu();
       cout << "Quel objet voulez-vous utilisé ?"<< endl;
       int useObj;
       cin >> useObj;
       if(useObj==1){
-        if(nom_perso->getBag()[3]->getName()=="Cle"){
+        if(sac->getNameObj(2)=="Cle"){
           nom_perso->useKey();
         }
         else{
           nom_perso->usePotion();
         }
-        nom_perso->removeFromBag(nom_perso->getBag()[3],1);
+        sac->removeFromBag(2);
       }
       else{
-        if(nom_perso->getBag()[4]->getName()=="Cle"){
+        if(sac->getNameObj(3)=="Cle"){
           nom_perso->useKey();
         }
         else{
           nom_perso->usePotion();
         }
-        nom_perso->removeFromBag(nom_perso->getBag()[4],2);
-      }
+        sac->removeFromBag(3);
       
-    }
+      
+    }*/
 
-    cout << "Dans votre sac, vous avez de la place pour "<<nom_perso->getRemainSpace()<<" objets"<< endl;
+    cout << "Dans votre sac, vous avez de la place pour "<<sac->getRemainSpace()<<" objets"<< endl;
     cout <<"Quel objet voulez-vous prendre?"<<endl; //il n'aura le droit de prendre qu'un objet par pièce. Meme si son sac est vide au départ
     int choix_objet;
     cin >> choix_objet;
     if(choix_objet == 1){
       if (object1 == 0){
       Cle *obj1 = new Cle();
-      nom_perso->addToBag(obj1);
+      sac->addToBag(obj1);
+      obj1->getName();
+      cout<<" "<<endl;
     }else if (object1 == 1){
       Potion *obj1 = new Potion;
-      nom_perso->addToBag(obj1);
+      sac->addToBag(obj1);
+      obj1->getName();
+      cout<<" "<<endl;
     }
 
     }else if(choix_objet == 2){
         if (object2 == 0){
       Cle *obj2 = new Cle();
-      nom_perso->addToBag(obj2);
+      sac->addToBag(obj2);
     }else if (object2 == 1){
       Potion *obj2 = new Potion;
-      nom_perso->addToBag(obj2);
+      sac->addToBag(obj2);
     }
     }else{
         cout << "Cet objet n'est pas dans cette pièce. Désolé"<<endl;
     }
-    cout<< "Il vous reste "<<nom_perso->getRemainSpace()<<" places"<<endl;
+    cout<< "Il vous reste "<<sac->getRemainSpace()<<" places"<<endl;
+  
 //
-    if(nom_perso->getBagCapacity()<3){
+    if(sac->getBagCapacity()<3){
       cout << "Vous n'avez rien dans votre sac sauf votre arme et votre bouclier"<<endl;
     }else{
       //nom_perso->getBagObj();
-      Objet * ObjSac1= nom_perso->getBag()[0];
-      cout<<"1: "<< ObjSac1->getName()<<", 2: "<<endl;
+      cout<<"Vous avez dans votre sac: TROUVER SOL " <<endl;
+      sac->getNameObj(2);
+      cout<<"Marche"<<endl;
+      //sac->getContenu();
       cout << "Voulez-vous déposer un objet dans la pièce ? (1: Oui, 0: Non)"<< endl;
       int depot;
       cin >> depot;
@@ -291,20 +299,16 @@ int main(){
         cout << "Quel objet voulez-vous déposer?"<< endl; 
         int aRetirer;
         cin >> aRetirer;
-        //Objet * ObjSac1= nom_perso->getBag()[2];
-        cout << "getbag"<< endl;
-
         if(aRetirer==1){
-          
-          nom_perso->removeFromBag(ObjSac1,0);
+          sac->removeFromBag(2);
       }
         else{
-          nom_perso->removeFromBag(nom_perso->getBag()[3],1);
+          sac->removeFromBag(3);
         }
       }
     }
 
-    cout<< "Il vous reste "<<nom_perso->getRemainSpace()<<" places XXXX"<<endl;
+    cout<< "Il vous reste "<<sac->getRemainSpace()<<" places XXXX"<<endl;
 
   }else if(role=='G'){
     cout<<"Ah! un nouveau guerrier"<<endl;
