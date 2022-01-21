@@ -1,28 +1,10 @@
-# LOA_Projet
-NOTES
+# Projet LOA
 
-Les Personnages
-- Le Moine: posède un poignard 
-- La Sorcière: possède une baguette magique
-- Le Guerrier: possède une épée
-- L'Amazone: possède une lance/ un arc
 
-La classe et la classe objet sont amis
+### Auteurs: Ali Shaïna et APANISHILE Tolulope 
 
-Les Objets 
-- Arme
-- Poison
-- Medicament
-- Bouclier
-- Clé de téléportation ?
-le poison et le médicament sont indifferenciables
-Tous les objets ont des niveaux
-
-Les Armes:
-- Lance 
-- Poignard
-- Baguette magique
-- Epée
-
-Chaque personnage "spawn" avec une arme de niveau 1 dans son sac limité à une uitlisation (un combat). L'arme dépend du personnage.
-
+Afin de faire fonctionner le programme, s'assurer que le Makefile est présent dans le répertoire. 
+Entrez la commande _make_ dans le terminale de commandes. 
+Puis la commande _make test_
+Dans le cas écheant, entrez la commande _g++ *.c -o main_
+Puis la commande _.\main_
